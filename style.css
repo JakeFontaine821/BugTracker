@@ -33,31 +33,18 @@ main{
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition-delay: var(--page-transition-time);
-    transition: all var(--page-transition-time) ease-out;
+
+    animation: Move-On-Screen-Anim .8s forwards;
+    /* transition-delay: var(--page-transition-time); */
+    /* transition: all var(--page-transition-time) ease-out; */
     /* transform: translate(0, -50%); */
     /* animation: landing-load .8s ease-out; */
 }
 
 main.off-screen{
-    
-    transform: translateY(100%);
+    /* transform: translateY(100%); */
+    animation: Move-Off-Screen-Anim .8s forwards;
 }
-
-/* @keyframes landing-load {
-    0% {
-        transform: translateY(100%);
-    }
-    45% {
-        transform: translateY(-3%);
-    }
-    70%{
-        transform: translateY(1%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-} */
 
 main button{
     margin: 5px 0px;
@@ -80,11 +67,37 @@ main button{
     align-items: center;
     text-align: center;
 
-    transition-delay: var(--page-transition-time);
-    transition: all var(--page-transition-time) ease-out;
+    animation: Move-On-Screen-Anim .8s forwards;
 }
 
 .login-page.off-screen{
-    /* transition-delay: var(--page-transition-time); */
-    transform: translateY(100%);
+    /* transform: translateY(100%); */
+    animation: Move-Off-Screen-Anim .8s forwards;
+}
+
+@keyframes Move-On-Screen-Anim {
+    0% {
+        transform: translateY(100%);
+    }
+    45% {
+        transform: translateY(-3%);
+    }
+    70%{
+        transform: translateY(1%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes Move-Off-Screen-Anim {
+    0% {
+        transform: translateY(0);
+    }
+    5% {
+        transform: translateY(-3%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
 }
