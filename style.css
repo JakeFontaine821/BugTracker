@@ -4,6 +4,8 @@
     --primary: #80f9ad;
     --secondary: #bef9d4;
     --accent: #8c4f76;
+
+    --page-transition-time: .8s;
 }
 
 body{
@@ -25,12 +27,37 @@ main{
     width: 40%;
     height: 100%;
 
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    transition-delay: var(--page-transition-time);
+    transition: all var(--page-transition-time) ease-out;
+    /* transform: translate(0, -50%); */
+    /* animation: landing-load .8s ease-out; */
 }
+
+main.off-screen{
+    
+    transform: translateY(100%);
+}
+
+/* @keyframes landing-load {
+    0% {
+        transform: translateY(100%);
+    }
+    45% {
+        transform: translateY(-3%);
+    }
+    70%{
+        transform: translateY(1%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+} */
 
 main button{
     margin: 5px 0px;
@@ -40,4 +67,24 @@ main button{
     padding: 20px;
     border-radius: 15px;
     font-size: 25px;
+}
+
+.login-page{
+    width: 40%;
+    height: 100%;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    transition-delay: var(--page-transition-time);
+    transition: all var(--page-transition-time) ease-out;
+}
+
+.login-page.off-screen{
+    /* transition-delay: var(--page-transition-time); */
+    transform: translateY(100%);
 }
