@@ -1,0 +1,23 @@
+{
+  "name": "bugtracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeFontaine821/BugTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakeFontaine821/BugTracker/issues"
+  },
+  "homepage": "https://github.com/JakeFontaine821/BugTracker#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
