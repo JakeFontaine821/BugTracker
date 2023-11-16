@@ -26,6 +26,10 @@ app.get("/", function(req, res){
     res.redirect("index.html");
 })
 
+app.post("/signupiguess", function(req, res){
+    res.redirect("damn.html");
+})
+
 app.use(express.static(__dirname+"/pages"));
 app.listen(port, function(){
     console.log(`Running on port ${port}`);

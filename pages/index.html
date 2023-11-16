@@ -10,6 +10,15 @@
 
     <!--Link to use logos from fontawesome-->
     <script src="https://kit.fontawesome.com/d995b789e7.js" crossorigin="anonymous"></script>
+
+    <script>
+        function CheckSignUpForm() {
+            if(document.getElementById("signup-username").value == "") {
+                event.preventDefault();
+                document.getElementById("signup-username-error").innerHTML = "Please enter a username.";
+            }
+        }
+    </script>
 </head>
 <body>
     <main class="landing-page">
@@ -31,11 +40,18 @@
     <article class="signup-page off-screen">
         <div><button class="back-button"><i class="fa-solid fa-angle-left"></i>Back</button></div>        
         <h1>Sign Up</h1>
-        <form>
-            <input type="text" placeholder="Username">
-            <input type="text" placeholder="Passwords">
-            <input type="text" placeholder="Display Name">
-            <button class="submit-button">Submit</button>
+        <form action="/signupiguess" method="post" onsubmit="return CheckSignUpForm()">
+
+            <label id="signup-username-error"></label>
+            <input type="text" placeholder="Username" id="signup-username">
+
+            <label id="signup-password-error"></label>
+            <input type="text" placeholder="Passwords" id="signup-password">
+
+            <label id="signup-display-name-error"></label>
+            <input type="text" placeholder="Display Name" id="signup-display-name">
+
+            <button type="submit" class="submit-button">Submit</button>
         </form>
     </article>
 

@@ -116,6 +116,10 @@ article .submit-button{
     font-family: 'Lemonada', cursive;
 }
 
+article label{
+    color: var(--accent);
+}
+
 /**************************************************************************************/
 /*                                    Sign Up Page                                    */
 .signup-page{
