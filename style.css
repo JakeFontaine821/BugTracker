@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap');
+
 :root{
     --text: #02170a;
     --background: #f6fef9;
@@ -21,6 +23,7 @@ body{
 
     /* set up text here */
     color: var(--text);
+    font-family: 'Lemonada', cursive;
 }
 
 /**************************************************************************************/
@@ -48,9 +51,10 @@ main button{
     cursor: pointer;
     border: none;
     background-color: var(--primary);
-    padding: 20px;
+    padding: 10px 20px;
     border-radius: 15px;
     font-size: 25px;
+    font-family: 'Lemonada', cursive;
 }
 
 /**************************************************************************************/
@@ -73,6 +77,45 @@ main button{
     animation: Move-Off-Screen-Anim .8s forwards;
 }
 
+article div{
+    width: 260px;
+    display: flex;
+    justify-content: baseline;
+}
+
+article .back-button{
+    border: none;
+    color: var(--accent);
+    background-color: var(--background);
+    cursor: pointer;
+    font-size: large;
+    font-family: 'Lemonada', cursive;
+}
+
+article form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article input{
+    border: none;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    padding: 20px;
+    margin-bottom: 25px;
+    font-size: large;
+}
+
+article .submit-button{
+    cursor: pointer;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary);
+    font-family: 'Lemonada', cursive;
+}
+
 /**************************************************************************************/
 /*                                    Sign Up Page                                    */
 .signup-page{
@@ -93,6 +136,8 @@ main button{
     animation: Move-Off-Screen-Anim .8s forwards;
 }
 
+/**************************************************************************************/
+/*                                Keyframe animations                                 */
 @keyframes Move-On-Screen-Anim {
     0% {
         transform: translateY(100%);
