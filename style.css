@@ -23,6 +23,8 @@ body{
     color: var(--text);
 }
 
+/**************************************************************************************/
+/*                                    Landing Page                                    */
 main{
     width: 40%;
     height: 100%;
@@ -35,14 +37,9 @@ main{
     text-align: center;
 
     animation: Move-On-Screen-Anim .8s forwards;
-    /* transition-delay: var(--page-transition-time); */
-    /* transition: all var(--page-transition-time) ease-out; */
-    /* transform: translate(0, -50%); */
-    /* animation: landing-load .8s ease-out; */
 }
 
 main.off-screen{
-    /* transform: translateY(100%); */
     animation: Move-Off-Screen-Anim .8s forwards;
 }
 
@@ -56,6 +53,8 @@ main button{
     font-size: 25px;
 }
 
+/**************************************************************************************/
+/*                                     Log in Page                                    */
 .login-page{
     width: 40%;
     height: 100%;
@@ -71,7 +70,26 @@ main button{
 }
 
 .login-page.off-screen{
-    /* transform: translateY(100%); */
+    animation: Move-Off-Screen-Anim .8s forwards;
+}
+
+/**************************************************************************************/
+/*                                    Sign Up Page                                    */
+.signup-page{
+    width: 40%;
+    height: 100%;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    animation: Move-On-Screen-Anim .8s forwards;
+}
+
+.signup-page.off-screen{
     animation: Move-Off-Screen-Anim .8s forwards;
 }
 
