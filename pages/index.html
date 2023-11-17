@@ -17,6 +17,16 @@
                 event.preventDefault();
                 document.getElementById("signup-username-error").innerHTML = "Please enter a username.";
             }
+
+            if(document.getElementById("signup-password").value == "") {
+                event.preventDefault();
+                document.getElementById("signup-password-error").innerHTML = "Please enter a password.";
+            }
+
+            if(document.getElementById("signup-display-name").value == "") {
+                event.preventDefault();
+                document.getElementById("signup-display-name-error").innerHTML = "Please enter a display name.";
+            }
         }
     </script>
 </head>
