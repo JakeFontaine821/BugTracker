@@ -19,17 +19,30 @@ mongoose.connect(db.mongoURI,{
 
 // Load in Schema
 require("./modules/loginSchema");
-var IssueLog = mongoose.model("logins");
+var LoginInfo = mongoose.model("logins");
 
 // Routes
 app.get("/", function(req, res){
     res.redirect("index.html");
 })
 
-app.post("/signupiguess", function(req, res){
-    res.redirect("damn.html");
+// Signup
+app.post("/signup", function(req, res){
+    LoginInfo.find({username: req.body.username}).then((log) => {
+        if(log.length > 0) {
+            // change username
+        }
+        else{
+            // save login info
+        }
+    })
+
+    // new LoginInfo(req.body).save().then(function(){
+    //     res.redirect("index.html");
+    // })
 })
 
+// General
 app.use(express.static(__dirname+"/pages"));
 app.listen(port, function(){
     console.log(`Running on port ${port}`);

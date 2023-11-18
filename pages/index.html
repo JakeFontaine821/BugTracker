@@ -13,16 +13,24 @@
 
     <script>
         function CheckSignUpForm() {
+            // Username
             if(document.getElementById("signup-username").value == "") {
                 event.preventDefault();
                 document.getElementById("signup-username-error").innerHTML = "Please enter a username.";
             }
 
+            // Password
             if(document.getElementById("signup-password").value == "") {
                 event.preventDefault();
                 document.getElementById("signup-password-error").innerHTML = "Please enter a password.";
             }
+            else if(document.getElementById("signup-password").value.length < 8 ||
+                    document.getElementById("signup-password").value.length > 20) {
+                event.preventDefault();
+                document.getElementById("signup-password-error").innerHTML = "Password must be between 8 and 20 characters.";
+            }
 
+            // Display Name
             if(document.getElementById("signup-display-name").value == "") {
                 event.preventDefault();
                 document.getElementById("signup-display-name-error").innerHTML = "Please enter a display name.";
@@ -50,16 +58,16 @@
     <article class="signup-page off-screen">
         <div><button class="back-button"><i class="fa-solid fa-angle-left"></i>Back</button></div>        
         <h1>Sign Up</h1>
-        <form action="/signupiguess" method="post" onsubmit="return CheckSignUpForm()">
+        <form action="/signup" method="post" onsubmit="return CheckSignUpForm()">
 
             <label id="signup-username-error"></label>
-            <input type="text" placeholder="Username" id="signup-username">
+            <input type="text" name="username" placeholder="Username" id="signup-username">
 
             <label id="signup-password-error"></label>
-            <input type="text" placeholder="Passwords" id="signup-password">
+            <input type="text" name="password" placeholder="Passwords" id="signup-password">
 
             <label id="signup-display-name-error"></label>
-            <input type="text" placeholder="Display Name" id="signup-display-name">
+            <input type="text" name="displayName" placeholder="Display Name" id="signup-display-name">
 
             <button type="submit" class="submit-button">Submit</button>
         </form>
