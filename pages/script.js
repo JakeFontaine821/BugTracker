@@ -61,3 +61,14 @@ setTimeout(() => {
     login_menu.style.visibility='visible';
     signup_menu.style.visibility='visible';
 }, 800)
+
+
+var queryData = window.location.search;
+var entries = new URLSearchParams(queryData);
+try{
+    let page = entries.get("page");
+    SwitchPages(page);
+} 
+catch (err) {
+    console.log(err);
+}

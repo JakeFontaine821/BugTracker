@@ -23,7 +23,7 @@ var LoginInfo = mongoose.model("logins");
 
 // Routes
 app.get("/", function(req, res){
-    res.redirect("index.html");
+    res.redirect("index.html?page=0");
 })
 
 // Signup
@@ -36,11 +36,11 @@ app.post("/signup", function(req, res){
             // save login info
         }
     })
+})
 
-    // new LoginInfo(req.body).save().then(function(){
+// new LoginInfo(req.body).save().then(function(){
     //     res.redirect("index.html");
     // })
-})
 
 // General
 app.use(express.static(__dirname+"/pages"));
