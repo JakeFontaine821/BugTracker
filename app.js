@@ -23,7 +23,7 @@ var LoginInfo = mongoose.model("logins");
 
 // Routes
 app.get("/", function(req, res){
-    res.redirect("index.html?page=0");
+    res.redirect("index.html?page=0"); // might not need to do page=0, if I dont pass anything it wont switch
 })
 
 // Signup
@@ -31,16 +31,20 @@ app.post("/signup", function(req, res){
     LoginInfo.find({username: req.body.username}).then((log) => {
         if(log.length > 0) {
             // change username
+            res.redirect("index.html?page=0&error=1");
+            //try this, if it doesnt work try chatgpt solution
         }
         else{
             // save login info
+            console.log("Login Saved");
+            // new LoginInfo(req.body).save().then(function(){
+            //     res.redirect("index.html");
+            // })
         }
     })
 })
 
-// new LoginInfo(req.body).save().then(function(){
-    //     res.redirect("index.html");
-    // })
+
 
 // General
 app.use(express.static(__dirname+"/pages"));
