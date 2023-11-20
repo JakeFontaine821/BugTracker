@@ -15,25 +15,35 @@ let current_page = Pages.Landing;
 
 function SwitchPages(_nextPage) {
     switch (current_page) {
-        case Pages.Landing || 0:
+        case Pages.Landing:
+        case 0:
             landing_menu.classList.toggle("off-screen");
             break;
-        case Pages.Login || 1:
+            
+        case Pages.Login:
+        case 1:
             login_menu.classList.toggle("off-screen");
             break;
-        case Pages.Signup || 2:
+
+        case Pages.Signup:
+        case 2:
             signup_menu.classList.toggle("off-screen");
             break;
     }
-
+    
     switch (_nextPage) {
-        case Pages.Landing || 0:
+        case Pages.Landing:
+        case 0:
             landing_menu.classList.toggle("off-screen");
             break;
-        case Pages.Login || 1:
+
+        case Pages.Login:
+        case 1:
             login_menu.classList.toggle("off-screen");
             break;
-        case Pages.Signup || 2:
+
+        case Pages.Signup:
+        case 2:
             signup_menu.classList.toggle("off-screen");
             break;
     }
@@ -66,8 +76,8 @@ setTimeout(() => {
 var queryData = window.location.search;
 var entries = new URLSearchParams(queryData);
 try {
-    let page = entries.get("page");
-    if(page == 0 || page == 1 || page == 2) {
+    let page = parseInt(entries.get("page"));
+    if(page === 0 || page === 1 || page === 2) {
         SwitchPages(page);
     }
 } 
