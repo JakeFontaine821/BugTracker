@@ -4,7 +4,8 @@ const body = document.querySelector("body"),
       signup_button = body.querySelector(".signup-button"),
       login_menu = body.querySelector(".login-page"),      
       signup_menu = body.querySelector(".signup-page"),
-      back_buttons = body.querySelectorAll(".back-button");
+      back_buttons = body.querySelectorAll(".back-button"),
+      username_error = document.getElementById("signup-username-error");
 
 const Pages = {
     Landing: 0,
@@ -13,7 +14,13 @@ const Pages = {
 }
 let current_page = Pages.Landing;
 
-function SwitchPages(_nextPage) {
+const error_dictionary = {
+    1: "Username is already taken."
+}
+
+function SwitchPages(_nextPage, _error = 0) {
+    console.log(_error);
+    // Close current page
     switch (current_page) {
         case Pages.Landing:
         case 0:
@@ -30,7 +37,7 @@ function SwitchPages(_nextPage) {
             signup_menu.classList.toggle("off-screen");
             break;
     }
-    
+    // Open new page
     switch (_nextPage) {
         case Pages.Landing:
         case 0:
@@ -45,9 +52,14 @@ function SwitchPages(_nextPage) {
         case Pages.Signup:
         case 2:
             signup_menu.classList.toggle("off-screen");
+
+            // Handle any errors
+            if(!isNaN(_error)) {
+                username_error.innerHTML = error_dictionary[_error];
+            }
             break;
     }
-
+    // Switch to current page
     current_page = _nextPage;
 }
 
@@ -77,8 +89,14 @@ var queryData = window.location.search;
 var entries = new URLSearchParams(queryData);
 try {
     let page = parseInt(entries.get("page"));
-    if(page === 0 || page === 1 || page === 2) {
-        SwitchPages(page);
+    let error_code = parseInt(entries.get("error"));
+    if(page >= 0 && page <= 2) {
+        if(!isNaN(error_code)){
+            SwitchPages(page, parseInt(error_code));
+        }
+        else {
+            SwitchPages(page);
+        }
     }
 } 
 catch (err) {
