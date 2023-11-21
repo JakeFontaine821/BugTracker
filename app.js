@@ -29,22 +29,18 @@ app.get("/", function(req, res){
 // Signup
 app.post("/signup", function(req, res){
     LoginInfo.find({username: req.body.username}).then((log) => {
-        if(log.length > 0) {
-            // change username
-            res.redirect("index.html?page=0&error=1");
-            //try this, if it doesnt work try chatgpt solution
-        }
-        else{
-            // save login info
-            console.log("Login Saved");
-            // new LoginInfo(req.body).save().then(function(){
-            //     res.redirect("index.html");
-            // })
-        }
+        console.log("Login Saved");
+        new LoginInfo(req.body).save().then(function(){
+            res.redirect("index.html");
+        })
     })
 })
 
-
+app.post("/checkExistingUsername", function(req, res){
+    LoginInfo.find({username: req.body.username}).then(function(_accountInfo){
+        res.json({_accountInfo});
+    })
+})
 
 // General
 app.use(express.static(__dirname+"/pages"));

@@ -1,11 +1,13 @@
+/*********************************************************************************************/
+/*                                 Landing Page Traversal                                    */
+/*********************************************************************************************/
 const body = document.querySelector("body"),
       landing_menu = body.querySelector("main"),
       login_button = body.querySelector(".login-button"),
       signup_button = body.querySelector(".signup-button"),
       login_menu = body.querySelector(".login-page"),      
       signup_menu = body.querySelector(".signup-page"),
-      back_buttons = body.querySelectorAll(".back-button"),
-      username_error = document.getElementById("signup-username-error");
+      back_buttons = body.querySelectorAll(".back-button");
 
 const Pages = {
     Landing: 0,
@@ -14,49 +16,33 @@ const Pages = {
 }
 let current_page = Pages.Landing;
 
-const error_dictionary = {
-    1: "Username is already taken."
-}
-
-function SwitchPages(_nextPage, _error = 0) {
-    console.log(_error);
+function SwitchPages(_nextPage) {
     // Close current page
     switch (current_page) {
         case Pages.Landing:
-        case 0:
             landing_menu.classList.toggle("off-screen");
             break;
             
         case Pages.Login:
-        case 1:
             login_menu.classList.toggle("off-screen");
             break;
 
         case Pages.Signup:
-        case 2:
             signup_menu.classList.toggle("off-screen");
             break;
     }
     // Open new page
     switch (_nextPage) {
         case Pages.Landing:
-        case 0:
             landing_menu.classList.toggle("off-screen");
             break;
 
         case Pages.Login:
-        case 1:
             login_menu.classList.toggle("off-screen");
             break;
 
         case Pages.Signup:
-        case 2:
             signup_menu.classList.toggle("off-screen");
-
-            // Handle any errors
-            if(!isNaN(_error)) {
-                username_error.innerHTML = error_dictionary[_error];
-            }
             break;
     }
     // Switch to current page
@@ -84,21 +70,44 @@ setTimeout(() => {
     signup_menu.style.visibility='visible';
 }, 800)
 
+/*********************************************************************************************/
+/*                                  Sign Up Username Check                                   */
+/*********************************************************************************************/
+const submit_signup_button = body.querySelectorAll(".submit-button"),
+      username_input = body.querySelector("#signup-username"),
+      username_error = document.getElementById("signup-username-error"),
+      interval = 1000/5; // 5 times a second
+let current_username_entry = "";
 
-var queryData = window.location.search;
-var entries = new URLSearchParams(queryData);
-try {
-    let page = parseInt(entries.get("page"));
-    let error_code = parseInt(entries.get("error"));
-    if(page >= 0 && page <= 2) {
-        if(!isNaN(error_code)){
-            SwitchPages(page, parseInt(error_code));
-        }
-        else {
-            SwitchPages(page);
-        }
+let username_check = setInterval(function(){
+    if(current_page == Pages.Signup && 
+        current_username_entry != username_input.value) { 
+            // Only run if were on sign in page and username entry has changed
+            current_username_entry = username_input.value
+
+            // Set up request
+            let requestData = {
+                username: current_username_entry
+            }
+
+            // Make Server request
+            fetch("/checkExistingUsername", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData)
+            }).then(function(_accountObject){
+                _accountObject.json().then(function(accounts){
+                    if(accounts._accountInfo.length > 0) {
+                        submit_signup_button[1].disabled = true;
+                        username_error.innerHTML = "Username is taken.";
+                    }
+                    else {
+                        submit_signup_button[1].disabled = false;
+                        username_error.innerHTML = "";
+                    }
+                })
+            })
     }
-} 
-catch (err) {
-    console.log(err);
-}
+}, interval)
