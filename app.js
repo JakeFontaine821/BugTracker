@@ -44,11 +44,11 @@ app.post("/checkExistingUsername", function(req, res) {
 app.post("/login", function(req, res) {
     LoginInfo.find({username: req.body.username, password: req.body.password}).then(function(_accountInfo) {
         if(_accountInfo.length > 0) {
-            console.log(`Account Found: Username:${_accountInfo[0].username} & Password:${_accountInfo[0].password}`);
-            res.json({ error: 'N/A' });
+            console.log(`Account Found: Username:${_accountInfo[0].username} & Name:${_accountInfo[0].displayName}`);
+            res.json({ result: "Success", username: _accountInfo[0].username, name: _accountInfo[0].displayName});
         }
         else{
-            res.json({ error: 'Username or Password is incorrect.' });
+            res.json({ result: "Fail", error: 'Username or Password is incorrect.' });
         }
     })
 })

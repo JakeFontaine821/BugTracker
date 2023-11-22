@@ -134,13 +134,13 @@ login_form.addEventListener("submit", function(event) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(requestData)
-    }).then(function(_errorObject) {
-        _errorObject.json().then(function(error){
-            if(error.error === "N/A") {
-                window.location.replace("/index.html");
+    }).then(function(_resultObject) {
+        _resultObject.json().then(function(result){
+            if(result.result === "Success") {
+                window.location.replace(`/woohoo.html?account:${result.username}&name:${result.name}`);
             }
             else {
-                login_error.innerHTML = error.error;
+                login_error.innerHTML = result.error;
             }            
         })
     }).catch(function(err) {
