@@ -136,8 +136,14 @@ login_form.addEventListener("submit", function(event) {
         body: JSON.stringify(requestData)
     }).then(function(_errorObject) {
         _errorObject.json().then(function(error){
-            // login_error.innerHTML = error.username;
-            console.log(error);
+            if(error.error === "N/A") {
+                window.location.replace("/index.html");
+            }
+            else {
+                login_error.innerHTML = error.error;
+            }            
         })
+    }).catch(function(err) {
+        console.log(err);
     })
 });
