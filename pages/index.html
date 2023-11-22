@@ -48,17 +48,21 @@
     <article class="login-page off-screen">
         <div><button class="back-button"><i class="fa-solid fa-angle-left"></i>Back</button></div>  
         <h1>log in</h1>
-        <form>
-            <input type="text" placeholder="Username">
-            <input type="text" placeholder="Passwords">
-            <button class="submit-button">Submit</button>
+        <!-- action="/login" method="post" -->
+        <form class="login-form">
+            <label id="login-username-error"></label>
+            <input type="text" name="username" placeholder="Username" id="login-username">
+
+            <input type="text" name="password" placeholder="Passwords" id="login-password">
+            
+            <button type="submit" class="submit-button">Submit</button>
         </form>
     </article>
 
     <article class="signup-page off-screen">
         <div><button class="back-button"><i class="fa-solid fa-angle-left"></i>Back</button></div>        
         <h1>Sign Up</h1>
-        <form action="/signup" method="post" onsubmit="return CheckSignUpForm()">
+        <form action="/signup" method="POST" onsubmit="return CheckSignUpForm()">
 
             <label id="signup-username-error"></label>
             <input type="text" name="username" placeholder="Username" id="signup-username">

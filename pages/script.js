@@ -111,3 +111,33 @@ let username_check = setInterval(function(){
             })
     }
 }, interval)
+
+/*********************************************************************************************/
+/*                                  Log in Username Check                                    */
+/*********************************************************************************************/
+const login_form = body.querySelector(".login-form"),
+      login_username = document.getElementById("login-username"),
+      login_password = document.getElementById("login-password"),
+      login_error = document.getElementById("login-username-error");
+
+login_form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    let requestData = {
+        username: login_username.value,
+        password: login_password.value
+    }
+
+    fetch("/login", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
+    }).then(function(_errorObject) {
+        _errorObject.json().then(function(error){
+            // login_error.innerHTML = error.username;
+            console.log(error);
+        })
+    })
+});
