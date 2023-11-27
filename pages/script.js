@@ -137,7 +137,7 @@ login_form.addEventListener("submit", function(event) {
     }).then(function(_resultObject) {
         _resultObject.json().then(function(result){
             if(result.result === "Success") {
-                window.location.replace(`/woohoo.html?account:${result.username}&name:${result.name}`);
+                window.location.replace(`/loggedin.html?account:${result.username}&name:${result.name}`);
             }
             else {
                 login_error.innerHTML = result.error;

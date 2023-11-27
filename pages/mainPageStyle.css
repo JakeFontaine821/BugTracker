@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap');
+
+:root{
+    --text: #02170a;
+    --background: #f6fef9;
+    --primary: #80f9ad;
+    --secondary: #bef9d4;
+    --accent: #8c4f76;
+
+    --page-transition-time: .8s;
+}
+
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+
+    /* set up text here */
+    color: var(--text);
+    font-family: 'Lemonada', cursive;
+}
+
+/**************************************************************************************/
+/*                                     Side Bar                                       */
+aside{
+    height: 100%;
+    width: 15%;
+    background-color: var(--secondary);
+}
+
+aside ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/**************************************************************************************/
+/*                                  Main Page Stuff                                   */
+main{
+    height: 100%;
+    width: 85%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/**************************************************************************************/
+/*                                      Nav Bar                                       */
+nav{
+    height: 75px;
+    width: 100%;
+    background-color: var(--accent);
+}
+
+/**************************************************************************************/
+/*                                  Article Contents                                  */
+article{
+    height: calc(100% - 75px);
+    width: 100%;
+    background-color: var(--primary);
+}
