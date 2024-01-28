@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var Schema = new Schema({
+var LoginSchema = new Schema({
     username:{
         type:String,
         require:true
@@ -16,4 +16,4 @@ var Schema = new Schema({
     }
 });
     /* This is the collection name */
-mongoose.model("logins", Schema);
+mongoose.model("logins", LoginSchema);
