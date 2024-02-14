@@ -1,3 +1,6 @@
 
 node_modules
 config/database.js
+
+package.json
+package-lock.json
